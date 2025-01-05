@@ -3,8 +3,59 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
- @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --rgba-secondary-color: 255, 255, 255;
+    --secondary-color: #ffffff;
+
+    --text-color-light: black;
+  }
+
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-color-light: white;
+    }
+  }
+}
 
 :root {
   --ifm-color-primary: #00283d;
@@ -16,17 +67,328 @@
   --ifm-color-primary-lightest: #00344f;
   --ifm-code-font-size: 95%;
   --ifm-background-color: transparent;
-  --ifm-link-color: #9BC1FD;
+  --ifm-link-color: #9bc1fd;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  font-family: 'Inter';
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+/* add css reset */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  font-family: "Inter";
+  line-height: 1.7;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Inter';
+html,
+body {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 16px;
+  font-style: normal;
 }
 
 main a {
   font-weight: bold;
+}
+p {
+  margin: 0 0 0 0;
+}
+
+.hero-section {
+  background-image: url("/src/images/Layer2.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh; /* Adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.managing-node_section {
+  /* Adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .managing-node_section {
+    background-image: url("/src/images/Layer3.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .green-bg {
+    background-image: url("/src/images/greenblob.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .compare-container-bg {
+    background-image: url("/src/images/putnode2.svg");
+    background-size: cover; /* Set the actual width and height of the image */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .seamless-container-bg {
+    background-image: url("/src/images/seamless.svg");
+    background-size: cover; /* Set the actual width and height of the image */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .comp_bg {
+    background-image: url("/src/images/Ellipsered.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    z-index: -1;
+  }
+  .comp_bg2 {
+    background-image: url("/src/images/Ellipsegreen.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 25%;
+    right: 0;
+    z-index: -1;
+  }
+  /* .putnode-bg {
+    width: 100%;
+    height: 788px;
+  } */
+}
+.comp_bg {
+}
+
+.comp_bg2 {
+}
+.build_bg {
+  background-image: url("/src/images/build1.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+}
+.build_bg2 {
+  background-image: url("/src/images/build2.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+}
+.build_bg3 {
+  background-image: url("/src/images/build3.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+}
+.build_bg4 {
+  background-image: url("/src/images/build4.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+}
+
+.explore_side_bg {
+  background-image: url("/src/images/yellowblob.svg");
+  background-size: contain;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 600px) {
+  .timeline1_block {
+    bottom: -200px;
+    left: -200px;
+  }
+}
+
+.infra-bg {
+  background-image: url("/src/images/infrastructure.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 250px;
+}
+
+.platformatic-logo {
+  background-image: url("/src/images/Platformatic\ Logo.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+}
+.footer-bg {
+  background-image: url("/src/images/Ellipse\ 163.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 767px) {
+  .card_bg {
+    background-image: url("/src/images/greenblob.svg"),
+      url("/src/images/Ellipsered.svg");
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+}
+.timeline {
+  border-left: 1px solid;
+}
+.explore-con_bg {
+  background-image: url("/src/images/explorecon.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 80%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.border-bottom {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.border-top {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .comp_bg {
+    width: 300px;
+    height: 100%;
+    top: 25%;
+    left: 0;
+  }
+
+  .comp_bg2 {
+    width: 300px;
+    height: 100%;
+    top: 25%;
+    right: 0;
+    left: auto;
+  }
+}
+
+.putnode-bg {
+  background-image: url("/src/images/putnode.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-bg {
+  background-image: url("/src/images/Ellipse159.svg");
+  background-size: 1000px 800px; /* Set the actual width and height of the image */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.white_bg {
+  background-image: url("/src/images/white_bg.svg");
+  background-size: 1200px 1000px; /* Set the actual width and height of the image */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .white_bg {
+    background-size: 800px 600px; /* Smaller size for small screens */
+  }
+}
+
+.watt-container-bg {
+  background-image: url("/src/images/greenblob.svg");
+  background-size: 1500px 1000px; /* Set the actual width and height of the image */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Adjust as needed */
+}
+
+.watt-con-bg {
+  background-image: url("/src/images/watt/yellowblod.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.side-focus-bg {
+  background-image: url("/src/images/focus-side.svg");
+  background-size: contain;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+.right-focus-bg {
+  background-image: url("/src/images/focusright.svg");
+  background-size: contain;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+
+/* watt page styles */
+@media (max-width: 1000px) {
+  .watt-hero_bg {
+    background-image: url("/src/images/watt/yellowblod.svg"),
+      url("/src/images/watt/wattherobg.svg"),
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    background-size: 100% auto, cover, cover; /* Adjust the first value as needed */
+    background-position: top, right, center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-blend-mode: normal, overlay, overlay;
+  }
 }
 
 .youtube-container {
@@ -66,8 +428,21 @@ main a {
   max-height: 120px;
 }
 
+.roboto-mono {
+  font-family: "Roboto Mono", monospace;
+}
 
-
+@media screen and (max-width: 768px) {
+  .navbar__item {
+    display: none !important;
+  }
+  .navbar__inner .navbar__items {
+    justify-content: space-between;
+  }
+  .navbar__inner .navbar__items .navbar__toggle.clean-btn {
+    order: 2;
+  }
+}
 
 @media screen and (max-width: 996px) {
   .container__quotes .card {
@@ -88,7 +463,7 @@ main a {
     display: block;
     -webkit-box-orient: unset;
   }
-  
+
   .container__quotes .card__body {
     max-height: unset;
   }
@@ -98,4 +473,147 @@ main a {
   width: 100%;
   height: auto;
   aspect-ratio: 16/9;
+}
+
+/* navbar styles */
+.navbar__item {
+  @apply flex items-center gap-2;
+}
+
+/* anchor */
+.remove-hvr {
+  @apply dark:hover:!text-white hover:!text-[#00050b];
+}
+
+.remove-hvr-alt {
+  @apply dark:hover:!text-[#00050b] hover:!text-white;
+}
+
+/* Time to change pseudo */
+.change__pseudo::after {
+  content: "";
+  @apply w-full hidden md:inline-block absolute left-0 top-[35%] border-t border-solid border-white/20;
+}
+
+/* section headers tag */
+.section-header__num-cont {
+  @apply flex flex-col mb-1 mt-[2px] items-center justify-center;
+}
+
+/* .section-header__num-cont .line {
+  @apply bg-gradient-to-b h-[70px] xl:h-[168px] w-px bg-slate-200;
+} */
+
+.section-header__num-cont .circle {
+  @apply w-[85.35px] h-[33.05px] text-black text-sm px-4 py-2 rounded-3xl flex justify-center items-center;
+}
+
+.section-header__num-cont .line {
+  @apply bg-gradient-to-b h-[70px] xl:h-[168px] w-px;
+  position: relative;
+}
+
+/* build api features section */
+.feature__richtext li {
+  @apply list-disc pl-2 md:pl-0;
+}
+.feature__richtext ul {
+  @apply pl-4 md:pl-0;
+}
+
+.feature__richtext li::marker {
+  margin-left: -15px; /* Adjust this to push in the bullets */
+}
+
+/* tool tip */
+.tooltip {
+  @apply absolute bottom-[100%] left-[50%] -translate-x-1/2 bg-[#2588e4] text-white !opacity-100 px-2 py-3 rounded-[4px] text-xs z-[5];
+  white-space: nowrap;
+}
+
+.tooltip-arrow {
+  @apply absolute -bottom-[5px] left-[50%] -translate-x-1/2 w-0 h-0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
+}
+
+/* build api background triangle */
+
+.triangle_bg {
+  /* background: url(/src/images/background_polygons_triangle.svg) repeat;
+  height: 100%;
+  width: 100%;
+  opacity: 0.4; */
+}
+
+/* .plt-vertical-background-opacity {
+  content: "";
+  background: linear-gradient(
+    to top,
+    rgba(var(--rgba-primary-color), 1),
+    rgba(var(--rgba-primary-color), 0.2) 43%
+  );
+} */
+
+/* typewriter */
+.blinking-cursor {
+  @apply dark:bg-white w-[10px] bg-[#00050b] h-6;
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* animation fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.fade-in-image-before {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.fade-in-code {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s; /* Delay to start after image fades in */
+}
+
+.fade-in-image-after {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 6s; /* Delay to start after code typing effect */
+}
+
+.fade-in-result {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 8s; /* Delay to start after image after code block fades in */
+}
+
+.dropdown svg,
+.footer svg {
+  display: inline-block;
+}
+
+article ul {
+  list-style-type: disc;
+  padding-left: var(--ifm-list-left-padding) !important;
 }

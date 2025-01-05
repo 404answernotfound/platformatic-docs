@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/schemas/v:version/:service",
+      "destination": "https://raw.githubusercontent.com/platformatic/schemas/main/v:version/:service"
+    }
+  ]
+}

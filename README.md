@@ -21,14 +21,14 @@ cd /workdir
 # Clone the main Platformatic repository
 git clone https://github.com/platformatic/platformatic.git
 
-# Clone the OSS repository
-git clone https://github.com/platformatic/oss.git
+# Clone the Docs repository
+git clone https://github.com/platformatic/docs.git
 ```
 
 After cloning, your working directory (`/workdir`) should contain:
 
 - `/platformatic`
-- `/oss`
+- `/docs`
 
 3. #### Install dependencies in both repositories
 
@@ -40,16 +40,16 @@ cd platformatic
 npm install
 cd ..
 
-# Install dependencies in the oss repository
-cd oss
+# Install dependencies in the docs repository
+cd docs
 npm install
 cd ..
 ```
 
-4. #### Navigate to the OSS directory
+4. #### Navigate to the docs directory
 
 ```bash
-cd oss
+cd docs
 ```
 
 ## Running the Development Server
@@ -64,7 +64,7 @@ export DOCS=$PWD/../platformatic/docs
 Step 2: Start the development server
 
 ```bash
-npm run start
+npm run sync-and-start
 ```
 
 ## Deploy
@@ -74,7 +74,7 @@ Deployment is managed automatically through GitHub Actions. Check the workflow c
 ## Generate docs for an old Platformatic version
 
 We keep online only the last version of each Platformatic major version (excluding version `0.x`).
-Every time a new version is realeased, this repository is tagged with `vX.Y.Z`.
+Every time a new version is released, this repository is tagged with `vX.Y.Z`.
 
 To generate the documentation for a specific version, checkout the related tag and run the development server.
 

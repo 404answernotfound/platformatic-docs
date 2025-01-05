@@ -9,7 +9,7 @@ of environment variables as setting values with [configuration placeholders](#co
 
 The Platformatic CLI automatically detects and loads configuration files found in the current working directory with the file names listed [here](../file-formats.md#configuration-files).
 
-Alternatively, you can specify a configuration file path using the [`--config` option](../cli.md#db) for most `platformatic runtime` CLI commands. The configuration examples in this reference use the JSON format.
+Alternatively, you can specify a configuration file path using the `--config` option for most `platformatic runtime` CLI commands. The configuration examples in this reference use the JSON format.
 
 ### Supported File Formats
 
@@ -19,12 +19,18 @@ For detailed information on supported file formats and extensions, please visit 
 
 Configuration settings containing sensitive data, such as database connection URLs and passwords, should be set using [configuration placeholders](#configuration-placeholders).
 
-### `server` **(required)**
+### `basePath`
 
-A object with the following settings:
+Service proxy basePath when exposing this service in a [composer](../composer/configuration.md) when setting the `proxy` property.
 
-- **`hostname`** (**required**, `string`) — Hostname where Platformatic Service server will listen for connections.
-- **`port`** (**required**, `number` or `string`) — Port where Platformatic Service server will listen for connections.
+If not specified, the service will be exposed on the service or a value specified in the service code via `platformatic.setBasePath()`.
+
+### `server`
+
+An object with the following settings:
+
+- **`hostname`** — Hostname where Platformatic Service server will listen for connections.
+- **`port`** — Port where Platformatic Service server will listen for connections.
 - **`healthCheck`** (`boolean` or `object`) — Enables the health check endpoint.
 
   - Powered by [`@fastify/under-pressure`](https://github.com/fastify/under-pressure).
@@ -55,7 +61,7 @@ A object with the following settings:
 - **`pluginTimeout`** (`integer`) -- the number of milliseconds to wait for a Fastify plugin to load
 - **`bodyLimit`** (`integer`) -- the maximum request body size in bytes
 - **`maxParamLength`** (`integer`) -- the maximum length of a request parameter
-- **`caseSensitive`** (`boolean`) -- if `true`, the router will be case sensitive
+- **`caseSensitive`** (`boolean`) -- if `true`, the router will be case-sensitive
 - **`ignoreTrailingSlash`** (`boolean`) -- if `true`, the router will ignore the trailing slash
 - **`connectionTimeout`** (`integer`) -- the milliseconds to wait for a new HTTP request
 - **`keepAliveTimeout`** (`integer`) -- the milliseconds to wait for a keep-alive HTTP request
@@ -106,7 +112,7 @@ An optional object that defines the plugins loaded by Platformatic Service.
   or an array of objects composed as follows,
   - `path` (`string`): Relative path to plugin's entry point.
   - `options` (`object`): Optional plugin options.
-  - `encapsulate` (`boolean`): if the path is a folder, it instruct Platformatic to not encapsulate those plugins.
+  - `encapsulate` (`boolean`): if the path is a folder, it instructs Platformatic to not encapsulate those plugins.
   - `maxDepth` (`integer`): if the path is a folder, it limits the depth to load the content from.
   - `autoHooks` (`boolean`): Apply hooks from autohooks.js file(s) to plugins found in folder.
   - `autoHooksPattern` (`string`): Regex to override the autohooks naming convention.
@@ -179,7 +185,11 @@ Example:
 
 ### `watch`
 
-Enables watching for file changes if set to `true` or `"true"`. It can also be customized with the following options:
+Enables watching for file changes if set to `true` or `"true"`. When changes are detected, then the service will be restarted after loading changed files.
+
+This is only available when executing within a Platformatic Runtime and if the runtime `watch` configuration is enabled.
+
+It can also be customized with the following options:
 
 - **`enabled`** (`boolean` or `string`): enables watching.
 
@@ -196,8 +206,6 @@ Enables watching for file changes if set to `true` or `"true"`. It can also be c
     }
   }
   ```
-
-If the runtime `hotReload` value is enabled, then the service will be restarted after loading changed files, otherwise the service will be restarted executing the existing code.
 
 ### `service`
 
@@ -231,7 +239,7 @@ Configure `@platformatic/service` specific settings such as `graphql` or `openap
 
 - **`openapi`** (`boolean` or `object`, default: `false`) — Enables OpenAPI REST support.
 
-  - If value is an object, all [OpenAPI v3](https://swagger.io/specification/) allowed properties can be passed. Also a `prefix` property can be passed to set the OpenAPI prefix.
+  - If value is an object, all [OpenAPI v3](https://swagger.io/specification/) allowed properties can be passed. Also, a `prefix` property can be passed to set the OpenAPI prefix.
   - Platformatic Service uses [`@fastify/swagger`](https://github.com/fastify/fastify-swagger) under the hood to manage this configuration.
 
   _Examples_
@@ -337,6 +345,9 @@ The value for any configuration setting can be replaced with an environment vari
 
 Platformatic will replace the placeholders in this example with the environment
 variables of the same name.
+
+If no environment variable is found, then the placeholder will be replaced with an empty string.
+Note that this can lead to a schema validation error.
 
 ### Setting Environment Variables
 

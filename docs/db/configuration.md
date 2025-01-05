@@ -18,6 +18,7 @@ For detailed information on supported file formats and extensions, please visit 
 
 Configuration file settings are grouped as follows:
 
+- **`basePath`** **(required)**: Configures the [basePath](../service/configuration.md#basePath).
 - **`server`** **(required)**: Configures the [server settings](../service/configuration.md#server)
 - **`composer`**: Specific settings for Platformatic Composer, such as service management and API composition.
 - **`metrics`**: Monitors and records performance [metrics](../service/configuration.md#metrics).
@@ -141,7 +142,7 @@ postgres://user:password@my-database:5432/db-name
   ```
 
 - **`openapi`** (`boolean` or `object`, default: `true`) — Enables OpenAPI REST support.
-  - If value is an object, all [OpenAPI v3](https://swagger.io/specification/) allowed properties can be passed. Also a `prefix` property can be passed to set the OpenAPI prefix.
+  - If value is an object, all [OpenAPI v3](https://swagger.io/specification/) allowed properties can be passed. Also, a `prefix` property can be passed to set the OpenAPI prefix.
   - Platformatic DB uses [`@fastify/swagger`](https://github.com/fastify/fastify-swagger) under the hood to manage this configuration.
 
   Enables OpenAPI
@@ -388,7 +389,7 @@ to securely provide the value for this setting.
   to securely provide the value for this setting.
   - `jwks` (`boolean` or `object`): Configure authorization with JSON Web Key Sets (JWKS). See the [JWKS documentation](../db/authorization/strategies.md#json-web-key-sets-jwks). 
   - `namespace` (`string`): Configure a [JWT Custom Claim Namespace](../db/authorization/strategies.md#jwt-custom-claim-namespace) to
-    to avoid name collisions. 
+    avoid name collisions. 
 - `webhook` (`object`): Configuration for the [Webhook authorization strategy](../db/authorization/strategies.md#webhook).
   - `url` (required, `string`): Webhook URL that Platformatic DB will make a
   POST request to.
